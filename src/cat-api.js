@@ -21,7 +21,7 @@ export const fetchCatByBreed = breedId => {
   return axios
     .get(`${API_URL}images/search?breed_ids=${breedId}&api_key=${key}`)
     .then(response => {
-      return response.data;
+      return response.data[0];
     })
     .catch(error => {
       return console.log(error);
