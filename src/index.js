@@ -55,19 +55,19 @@ const description = img => {
   fetchBreeds(selectCats.value)
     .then(resolve => {
       const check = resolve.find(option => option.id === selectCats.value);
+
       catDiv.innerHTML = `
           <h2>${check.name}</h2>
+          
           <img src="${img.url}"height="400"></img>
           <p>${check.description}</p>
           <p><b>Temperament: </b>${check.temperament}</p>`;
       catDiv.style.display = 'block';
-      loader.style.display = 'none';
+      loader.style.opacity = 0;
     })
     .catch(error => {
       return console.log(error);
     });
 };
 
-selectCats.addEventListener('input', imgCats => {
-  loader.style.opacity = 1;
-});
+selectCats.addEventListener('change', imgCats);
