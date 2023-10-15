@@ -15,7 +15,7 @@ const catDiv = document.querySelector('.cat-info');
 // console.log(catDiv);
 
 error.style.opacity = 0;
-loader.style.opacity = 1;
+loader.style.opacity = 0;
 function getError() {
   loader.style.opacity = 0;
   error.style.opacity = 1;
@@ -41,6 +41,7 @@ const catsLink = catsRules => {
   });
 };
 const imgCats = showKitty => {
+  loader.style.opacity = 1;
   fetchCatByBreed(selectCats.value)
     .then(resolve => {
       description(resolve);
@@ -67,4 +68,6 @@ const description = img => {
     });
 };
 
-selectCats.addEventListener('input', imgCats);
+selectCats.addEventListener('input', imgCats => {
+  loader.style.opacity = 1;
+});
